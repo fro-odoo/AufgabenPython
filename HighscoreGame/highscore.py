@@ -10,22 +10,19 @@ class Highscore():
     def getStorage(self):
         try:
             return pickle.load(self.file("r"))
-        except EOFError:
+        except:
             return None
     
   
     def sortStorage(self,newVal):
-        finalList = []
-        print(f"SPLIT: {self.val}")
+        if self.getStorage() == None:
+            print("hier")
+        else: 
+            return newVal
+        
         
     
     def write(self,val):
-        try:
-            pickle.dump(" ".join(self.val) + str(val),self.file("w"))
-        except EOFError:
-            print("ERRORRR")
-        except AttributeError:
-            print("hier")
-            pickle.dump(f"{val}",self.file("w"))
-        
+        pickle.dump(val,self.file("w"))
+      
     
